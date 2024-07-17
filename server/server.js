@@ -13,18 +13,16 @@ const bookingRouter = require("./routes/bookingRoute");
 
 const app = express();
 const clientBuildPath = path.join(__dirname, "../client/build");
-console.log("clientBuildPath: ", clientBuildPath);
+console.log(clientBuildPath);
 
-app.use(express.static(clientBuildPath));
-app.get("*", (req, res) => {
-    res.sendFile(path.join(clientBuildPath, "index.html"));
-})
-
-app.use(cors({
-    origin: "*", // Allow only frontend origin.
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-}));
+app.use(express.static(clientBuildPath)); // 8081 -> localhost:8081 -> index,html
+app.use(
+    cors({
+        origin: "*",
+        methods: ["GET", "POST", "PUT", "DELETE"],
+        allowedHeaders: ["Content-Type", "Authorization"],
+    })
+);
 
 // app.use("/api/bookings/verify", express.raw({ type: "application/json" }));
 app.use(express.json());
