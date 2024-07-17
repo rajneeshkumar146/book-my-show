@@ -18,9 +18,10 @@ console.log(clientBuildPath);
 app.use(express.static(clientBuildPath)); // 8081 -> localhost:8081 -> index,html
 app.use(
     cors({
-        origin: "*",
+        origin: ["http://localhost:3000", "https://book-my-show-w98p.onrender.com"],
         methods: ["GET", "POST", "PUT", "DELETE"],
         allowedHeaders: ["Content-Type", "Authorization"],
+        credentials: true,
     })
 );
 
