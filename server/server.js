@@ -1,4 +1,6 @@
 const express = require("express");
+const path = require("path");
+const cors = require("cors");
 
 require('dotenv').config();  // to access the environment variales.
 
@@ -10,6 +12,20 @@ const showRouter = require("./routes/showRoute");
 const bookingRouter = require("./routes/bookingRoute");
 
 const app = express();
+const clientBuildPath = path.join(__dirname, "../client/build");
+console.log("clientBuildPath: ", clientBuildPath);
+
+app.use(express.static(clientBuildPath));
+app.get("*", (req, res) => {
+    res.sendFile(path.join(clientBuildPath, "index.html"));
+})
+
+app.use(cors({
+    orgin: "*", // Allow only frontend origin.
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+}));
+
 // app.use("/api/bookings/verify", express.raw({ type: "application/json" }));
 app.use(express.json());
 
@@ -23,8 +39,8 @@ app.use("/api/theatres", theatreRouter);
 app.use("/api/shows", showRouter);
 app.use("/api/bookings", bookingRouter);
 
-app.use((req,res) => {
-    res.status(404).json({message: "Page not found"});
+app.use((req, res) => {
+    res.status(404).json({ message: "Page not found" });
 });
 
 app.listen(8082, () => {
