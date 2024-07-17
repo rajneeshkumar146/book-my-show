@@ -21,7 +21,7 @@ app.get("*", (req, res) => {
 })
 
 app.use(cors({
-    orgin: "*", // Allow only frontend origin.
+    origin: "*", // Allow only frontend origin.
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
 }));
