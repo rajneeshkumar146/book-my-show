@@ -24,10 +24,10 @@ const SingleMovie = () => {
     try {
       dispatch(ShowLoading());
       const response = await getMovieById(params.id);
-      if (response.success) {
+      if (response.status == "success") {
         setMovie(response.data);
       } else {
-        message.error(response.message);
+        message.success(response.message);
       }
       dispatch(HideLoading());
     } catch (err) {
@@ -40,10 +40,10 @@ const SingleMovie = () => {
     try {
       dispatch(ShowLoading());
       const response = await getAllTheatresByMovie({ movie: params.id, date });
-      if (response.success) {
+      if (response.status = "success") {
         setTheatres(response.data);
       } else {
-        message.error(response.message);
+        message.success(response.message);
       }
       dispatch(HideLoading());
     } catch (err) {

@@ -17,10 +17,10 @@ const Home = () => {
     try {
       dispatch(ShowLoading());
       const response = await getAllMovies();
-      if (response.success) {
+      if (response.status == "success") {
         setMovies(response.data);
       } else {
-        message.error(response.message);
+        message.success(response.message);
       }
       dispatch(HideLoading());
     } catch (error) {

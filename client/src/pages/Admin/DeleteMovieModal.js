@@ -16,11 +16,11 @@ const DeleteMovieModal = ({
       dispatch(ShowLoading());
       const movieId = selectedMovie._id;
       const response = await deleteMovie({ movieId });
-      if (response.success) {
+      if (response.status == "success") {
         message.success(response.message);
         getData();
       } else {
-        message.error(response.message);
+        message.success(response.message);
       }
       setSelectedMovie(null);
       setIsDeleteModalOpen(false);

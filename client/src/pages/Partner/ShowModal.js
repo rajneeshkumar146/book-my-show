@@ -44,19 +44,19 @@ const ShowModal = ({
     try {
       dispatch(ShowLoading());
       const movieResponse = await getAllMovies();
-      if (movieResponse.success) {
+      if (movieResponse.status = "success") {
         setMovies(movieResponse.data);
       } else {
-        message.error(movieResponse.message);
+        message.success(movieResponse.message);
       }
 
       const showResponse = await getShowsByTheatre({
         theatreId: selectedTheatre._id,
       });
-      if (showResponse.success) {
+      if (showResponse.status = "success") {
         setShows(showResponse.data);
       } else {
-        message.error(showResponse.message);
+        message.success(showResponse.message);
       }
 
       dispatch(HideLoading());
@@ -81,12 +81,12 @@ const ShowModal = ({
           theatre: selectedTheatre._id,
         });
       }
-      if (response.success) {
+      if (response.status = "success") {
         getData();
         message.success(response.message);
         setView("table");
       } else {
-        message.error(response.message);
+        message.success(response.message);
       }
       dispatch(HideLoading());
     } catch (err) {
@@ -103,11 +103,11 @@ const ShowModal = ({
     try {
       dispatch(ShowLoading());
       const response = await deleteShow({ showId: showId });
-      if (response.success) {
+      if (response.status = "success") {
         message.success(response.message);
         getData();
       } else {
-        message.error(response.message);
+        message.success(response.message);
       }
       dispatch(HideLoading());
     } catch (err) {

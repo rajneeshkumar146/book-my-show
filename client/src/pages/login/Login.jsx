@@ -10,12 +10,12 @@ function Login() {
     console.log(values);
     try {
       const response = await LoginUser(values);
-      if (response.success) {
+      if (response.status == "success") {
         message.success(response.message);
         localStorage.setItem("token", response.data);
         navigate("/");
       } else {
-        message.error(response.message);
+        message.success(response.message);
       }
     } catch (err) {
       console.log(err);

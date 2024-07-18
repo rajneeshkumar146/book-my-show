@@ -11,13 +11,13 @@ function Forget() {
     console.log(values);
     try {
       const response = await ForgetPassword(values);
-      if (response.success) {
+      if (response.status == "success") {
         message.success(response.message);
         alert("OTP sent to your email");
         // window.location.href = "/reset";
         navigate(`/reset/${encodeURIComponent(values.email)}`); // saikaran.20@gmail.com
       } else {
-        message.error(response.message);
+        message.success(response.message);
       }
     } catch (error) {
       message.error(error.message);

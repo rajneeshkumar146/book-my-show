@@ -16,11 +16,11 @@ const DeleteTheatreModal = ({
       dispatch(ShowLoading());
       const theatreId = selectedTheatre._id;
       const response = await deleteTheatre(theatreId);
-      if (response.success) {
+      if (response.status == "success") {
         message.success(response.message);
         getData();
       } else {
-        message.error(response.message);
+        message.success(response.message);
       }
       setSelectedTheatre(null);
       setIsDeleteModalOpen(false);

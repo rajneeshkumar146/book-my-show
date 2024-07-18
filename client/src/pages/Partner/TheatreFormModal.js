@@ -25,12 +25,12 @@ const TheatreForm = ({
         values.theatreId = selectedTheatre._id;
         response = await updateTheatre(values);
       }
-      if (response.success) {
+      if (response.status = "success") {
         getData();
         message.success(response.message);
         setIsModalOpen(false);
       } else {
-        message.error(response.message);
+        message.success(response.message);
       }
       setSelectedTheatre(null);
       dispatch(HideLoading());

@@ -22,7 +22,7 @@ const TheatreList = () => {
     try {
       dispatch(ShowLoading()); // state.loading = true
       const response = await getAllTheatres(user._id);
-      if (response.success) {
+      if (response.status == "success") {
         const allTheatres = response.data;
         setTheatres(
           allTheatres.map(function (theatre) {
@@ -31,7 +31,7 @@ const TheatreList = () => {
         );
         setTheatres(response.data);
       } else {
-        message.error(response.message);
+        message.success(response.message);
       }
       dispatch(HideLoading()); // state.loading = false
     } catch (err) {

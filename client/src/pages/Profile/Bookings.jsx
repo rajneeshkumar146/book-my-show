@@ -14,11 +14,11 @@ const Bookings = () => {
     try {
       dispatch(ShowLoading());
       const response = await getAllBookings();
-      if (response.success) {
+      if (response.status == "success") {
         setBookings(response.data);
         console.log(response.data);
       } else {
-        message.error(response.message);
+        message.success(response.message);
       }
 
       dispatch(HideLoading());

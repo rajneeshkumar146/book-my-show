@@ -9,10 +9,10 @@ function Register() {
     try {
       const response = await RegisterUser(values);
       console.log(response);
-      if (response.success) {
+      if (response.status == "success") {
         message.success(response.message);
       } else {
-        message.error(response.message);
+        message.success(response.message);
       }
     } catch (err) {
       console.log(err);
