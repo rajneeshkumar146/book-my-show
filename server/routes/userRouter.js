@@ -62,15 +62,15 @@ userRouter.patch("/forgetpassword", async function (req, res) {
     user.otpExpiry = Date.now() + 10 * 60 * 1000;
     // those updates will be send to the db
     await user.save();
-    await EmailHelper("otp.html", user.email, {
-      name: user.name,
-      otp: otp,
-    });
     res.status(200).json({
       status: "success",
       message: "otp sent to your email",
     });
     // send the mail to there email -> otp
+    EmailHelper("otp.html", user.email, {
+      name: user.name,
+      otp: otp,
+    });
   } catch (err) {
     res.status(500).json({
       message: err.message,
