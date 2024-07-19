@@ -17,7 +17,7 @@ const Home = () => {
     try {
       dispatch(ShowLoading());
       const response = await getAllMovies();
-      if (response.status == "success") {
+      if (response.status === "success") {
         setMovies(response.data);
       } else {
         message.success(response.message);

@@ -21,6 +21,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+            <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
             {/* <Route path="/" element={<Home />} /> */}
             <Route path="/login" element={<Login />}></Route>
 
@@ -72,9 +73,9 @@ function App() {
             />
 
 
-          <Route path="/forget" element={<Forget />} />
-          
-          <Route path="/reset/:email" element={<Reset />} />
+            <Route path="/forget" element={<Forget />} />
+
+            <Route path="/reset/:email" element={<Reset />} />
 
           </Routes>
 

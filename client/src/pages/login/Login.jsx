@@ -10,10 +10,10 @@ function Login() {
     console.log(values);
     try {
       const response = await LoginUser(values);
-      if (response.status == "success") {
+      if (response.status === "success") {
         message.success(response.message);
         localStorage.setItem("token", response.data);
-        navigate("/");
+        navigate("/home");
       } else {
         message.success(response.message);
       }
@@ -24,7 +24,7 @@ function Login() {
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      navigate("/");
+      navigate("/home");
     }
   }, []);
   return (

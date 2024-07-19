@@ -9,7 +9,7 @@ function Register() {
     try {
       const response = await RegisterUser(values);
       console.log(response);
-      if (response.status == "success") {
+      if (response.status === "success") {
         message.success(response.message);
       } else {
         message.success(response.message);

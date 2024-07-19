@@ -24,7 +24,7 @@ const SingleMovie = () => {
     try {
       dispatch(ShowLoading());
       const response = await getMovieById(params.id);
-      if (response.status == "success") {
+      if (response.status === "success") {
         setMovie(response.data);
       } else {
         message.success(response.message);

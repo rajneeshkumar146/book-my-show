@@ -11,7 +11,7 @@ function Forget() {
     console.log(values);
     try {
       const response = await ForgetPassword(values);
-      if (response.status == "success") {
+      if (response.status === "success") {
         message.success(response.message);
         alert("OTP sent to your email");
         // window.location.href = "/reset";

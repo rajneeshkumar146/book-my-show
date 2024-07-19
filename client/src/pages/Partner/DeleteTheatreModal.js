@@ -16,7 +16,7 @@ const DeleteTheatreModal = ({
       dispatch(ShowLoading());
       const theatreId = selectedTheatre._id;
       const response = await deleteTheatre(theatreId);
-      if (response.status == "success") {
+      if (response.status === "success") {
         message.success(response.message);
         getData();
       } else {

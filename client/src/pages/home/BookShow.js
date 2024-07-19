@@ -22,7 +22,7 @@ const BookShow = () => {
     try {
       dispatch(ShowLoading()); // Dispatching action to show loading state
       const response = await getShowById({ showId: params.id }); // API call to fetch show details
-      if (response.status == "success") {
+      if (response.status === "success") {
         setShow(response.data); // Setting state with fetched show data
         // message.success(response.message); // Optional success message
         console.log(response.data); // Logging show data to console
